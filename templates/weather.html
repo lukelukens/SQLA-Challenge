@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <style>
+        table,
+        td {
+            border: 2px solid rgb(59, 59, 59);
+        }
+
+        .padding {
+            padding: 8px;
+        }
+
+        th {
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <title>Great Flask weather app!</title>
+
+    <h1>What a great Flask app!</h1>
+    <!-- <h3>Navigation for this great Flask app!</h3> -->
+    <table>
+        <th class='padding'><b>Navigation for this great Flask app!</b></th>
+        <tr>
+            <td class='padding'><b><a href='/api/v1.0/precipitation'>Precipitation</a></b></td>
+            <td class='padding'>Get JSON of weather data by date and precipitation amount</td>
+        </tr>
+        <tr>
+            <td class='padding'><b><a href='/api/v1.0/stations'>Stations</a></b></td>
+            <td class='padding'>Get JSON of the stations providing data</td>
+        </tr>
+        <tr>
+            <td class='padding'><b><a href='/api/v1.0/tobs'>Year's Weather</a></b></td>
+            <td class='padding'>Get JSON of dates and temperature observations from a year from the last data point</td>
+        </tr>
+        <tr>
+            <!-- <td><a href='/api/v1.0/{{start}}'>Temp Checker</a></td> -->
+            <td class='padding'><b>Temp Checker</b></td>
+            <td class='padding'>See the minimum, average, and max temperatures between dates (mm/dd/yy):</td>
+        <tr>
+            <td></td>
+            <td>
+                <table>
+                    <td>Start to current input: </td>
+                    <td>
+                        <form id="start_only" action="/api/v1.0/" method="POST">
+                            <input type="text" placeholder="mm/dd/yy" name="start_start">
+                            <input type="submit" value="Start to Latest">
+                        </form>
+                    </td>
+                    <tr>
+                        <td>Specific range input: </td>
+                        <td>
+                            <form id="date_range" action="/api/v1.0/" method="POST">
+                                <input type="text" placeholder="mm/dd/yy" name="start_start">
+                                <input type="text" placeholder="mm/dd/yy" name="startend_end">
+                                <input type="submit" value="Start to End">
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        </tr>
+    </table>
+</body>
+
+</html>
