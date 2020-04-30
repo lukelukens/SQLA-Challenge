@@ -11,6 +11,7 @@ import requests
 engine = create_engine("sqlite:///../../GWU-ARL-DATA-PT-12-2019-U-C/02-Homework/10-Advanced-Data-Storage-and-Retrieval/Instructions/Resources/hawaii.sqlite")
 Base = automap_base()
 Base.prepare(engine, reflect=True)
+
 Measurement = Base.classes.measurement
 Station = Base.classes.station
 session = Session(engine)
@@ -20,7 +21,6 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     lid = request.args.get('lid')
-
     return render_template('weather.html')
 
 #   * Convert the query results to a Dictionary using `date` as the key and `prcp` as the value.
@@ -33,8 +33,6 @@ def precipitation():
     for _, row in year_df.iterrows():
         date_key[row.date]=row.prcp
     return jsonify(date_key)
-    # return "daddy"
-
 
 #   * Return a JSON list of stations from the dataset.
 @app.route("/api/v1.0/stations")
@@ -53,8 +51,8 @@ def tobs():
     rain_totals = []
     for result in rain:
         row = {}
-        row["date"] = rain[0]
-        row["prcp"] = rain[1]
+        row["date"] = result[0]
+        row["prcp"] = result[1]
         rain_totals.append(row)
     return jsonify(rain_totals)
 
